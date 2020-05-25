@@ -1,0 +1,24 @@
+﻿Version 1.0.0-rc-02 (xx Juin 2018)
+
+• Ajout :
+	- Recherche d'activités sur la fenêtre d'ouverture d'activité.
+
+• Amélioration :
+	- Optimisation lors de la recherche sur la fenêtre de gestion des activités.
+
+• Correction :
+	- SDLP01 : Dans certains cas, l'authentification ne fonctionnait pas correctement.
+
+-----------------------------------------------------------
+
+Version 1.0.0-rc-01 (17 Juin 2018)
+
+Première version publique.
+
+• Ajout :
+	- Création d'une activité.
+	- Sauvegarde des activités dans la base de données.
+	- Modification des activités.
+	- Exportation/Importation de l'activité.
+	- Gestion des activités et des résultats.
+	- Consultation des résultats.

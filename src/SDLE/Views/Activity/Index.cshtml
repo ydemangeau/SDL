@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <h1>Le studio des langues</h1>
+    <p class="lead">Le studio des langues permet de travailler sa compréhension orale en remplissant des activités en lien avec un fichier audio ou vidéo.</p>
+</div>
+
+<div>
+    <h2>Fonctionnement de l'application</h2>
+    <p style="text-align:justify">Le but du studio des langues est de retrouver un texte caché a partir d'un fichier audio ou vidéo.</p>
+    <p style="text-align:justify">Pour cela, lorsque vous entendez un mot saisisez le dans la zone de texte et valider. Si le mot existe, alors ce dernier sera affiché parmis le texte caché.</p>
+    <p style="text-align:justify">Vous avez la possiblité avant de commencer à travailler une activité de choisir d'afficher ou de masquer des mots fournis par le professeur.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Travailler une nouvelle activité</h2>
+        <p style="text-align:justify">Pour commencer une nouvelle activité, cliquez sur le bouton ci-dessous</p>
+        <p><a class="btn btn-default" href="@Url.Action("NewActivities", "Activity")">Nouvelle activité &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Travailler une activité existante</h2>
+        <p style="text-align:justify">Vous avez la posibilité de continuer une activité préalablement sauvegardé en cliquant sur le bouton ci-dessous.</p>
+        <p><a class="btn btn-default" href="@Url.Action("SavedActivities", "Activity")">Activité sauvegardée &raquo;</a></p>
+    </div>
+</div>

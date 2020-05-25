@@ -1,0 +1,139 @@
+﻿<Window x:Class="SDLP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:SDLP"
+        mc:Ignorable="d"
+        Title="Le Studio des Langues" Height="485" Width="935" WindowStartupLocation="CenterOwner" MinHeight="485" MinWidth="935">
+    <Window.Resources>
+        <RoutedUICommand x:Key="ImportActivity" Text="_Importer une activité">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>CTRL+SHIFT+I</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+        <RoutedUICommand x:Key="ExportActivity" Text="_Exporter une activité">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>CTRL+SHIFT+E</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+        <RoutedUICommand x:Key="Close" Text="F_ermer">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>CTRL+W</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+        <RoutedUICommand x:Key="Exit" Text="_Quitter">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>ALT+F4</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+        <RoutedUICommand x:Key="ToUpper" Text="Mettre en majuscule">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>CTRL+SHIFT+U</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+        <RoutedUICommand x:Key="ToLower" Text="Mettre en minuscule">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>CTRL+SHIFT+L</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+        <RoutedUICommand x:Key="WordWrap" Text="Retour automatique à la ligne">
+            <RoutedUICommand.InputGestures>
+                <KeyGesture>CTRL+ALT+W</KeyGesture>
+            </RoutedUICommand.InputGestures>
+        </RoutedUICommand>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding x:Name="NewCommandBinding" Command="New" Executed="NewCommandBinding_Executed"/>
+        <CommandBinding x:Name="OpenCommandBinding" Command="Open" Executed="OpenCommandBinding_Executed"/>
+        <CommandBinding x:Name="SaveCommandBinding" Command="Save" Executed="SaveCommandBinding_Executed"/>
+        <CommandBinding x:Name="ImportActivityCommandBingind" Command="{StaticResource ImportActivity}" Executed="ImportActivityCommandBingind_Executed"/>
+        <CommandBinding x:Name="ExportActivityCommandBinding" Command="{StaticResource ExportActivity}" Executed="ExportActivityCommandBinding_Executed"/>
+        <CommandBinding x:Name="CloseCommandBinding" Command="{StaticResource Close}" Executed="CloseCommandBinding_Executed"/>
+        <CommandBinding x:Name="ExitCommandBinding" Command="{StaticResource Exit}" Executed="ExitCommandBinding_Executed"/>
+        <CommandBinding x:Name="DeleteCommandBinding" Command="Delete" Executed="DeleteCommandBinding_Executed"/>
+        <CommandBinding x:Name="ToUpperCommandBinding" Command="{StaticResource ToUpper}" Executed="ToUpperCommandBinding_Executed"/>
+        <CommandBinding x:Name="ToLowerCommandBinding" Command="{StaticResource ToLower}" Executed="ToLowerCommandBinding_Executed"/>
+        <CommandBinding x:Name="WordWrapCommandBinding" Command="{StaticResource WordWrap}" Executed="WordWrapCommandBinding_Executed"/>
+        <CommandBinding x:Name="HelpCommandBinding" Command="Help" Executed="HelpCommandBinding_Executed"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="601*"/>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Height="20" VerticalAlignment="Top" IsMainMenu="True" Grid.ColumnSpan="3">
+            <MenuItem Header="_Fichier">
+                <MenuItem x:Name="NewMenuItem" Header="_Nouveau" Command="New"/>
+                <MenuItem Header="_Ouvrir..." Command="Open"/>
+                <Separator/>
+                <MenuItem x:Name="SaveActivityMenuItem" Command="Save"/>
+                <Separator/>
+                <MenuItem x:Name="ImportActivityMenuItem" Command="{StaticResource ImportActivity}"/>
+                <Separator/>
+                <MenuItem x:Name="ExportActivityMenuItem" Command="{StaticResource ExportActivity}"/>
+                <Separator/>
+                <MenuItem x:Name="CloseMenuItem" Header="F_ermer" Command="{StaticResource Close}"/>
+                <Separator/>
+                <MenuItem x:Name="ExitMenuItem" Command="{StaticResource Exit}"/>
+            </MenuItem>
+            <MenuItem Header="_Edition">
+                <MenuItem Command="Undo"/>
+                <MenuItem Command="Redo"/>
+                <Separator/>
+                <MenuItem Command="Cut"/>
+                <MenuItem Command="Copy"/>
+                <MenuItem Command="Paste"/>
+                <MenuItem Header="Supprimer">
+                    <MenuItem Header="Supprimer le mot actuel" Command="Delete"/>
+                    <MenuItem Header="Supprimer le mot précédent" Command="DeletePreviousWord"/>
+                    <MenuItem Header="Supprimer le mot suivant" Command="DeleteNextWord"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Command="SelectAll"/>
+                <Separator/>
+                <MenuItem Header="Avancé">
+                    <MenuItem Command="{StaticResource ToUpper}"/>
+                    <MenuItem Command="{StaticResource ToLower}"/>
+                    <Separator/>
+                    <MenuItem x:Name="WordWrapMenuItem" Command="{StaticResource WordWrap}" IsCheckable="True" IsChecked="True"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Affichage">
+                <MenuItem x:Name="ActivitiesMenuItem" Header="Activités" Click="ActivitiesMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Outils">
+                <MenuItem x:Name="BDDConfigurationMenuItem" Header="Informations de la base de données" Click="BDDConfigurationMenuItem_Click"/>
+                <MenuItem x:Name="LDAPConfigurationMenuItem" Header="Informations du serveur de domaine" Click="LDAPConfigurationMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Aide">
+                <MenuItem x:Name="HelpMenuItem" Header="Afficher l'aide" Command="Help"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock Text="Texte de l'activité : " Margin="10,25,10,1" TextAlignment="Center" Height="24"/>
+        <TextBox x:Name="TexteTextBox" TextWrapping="Wrap" Grid.Row="1" Grid.RowSpan="3" Margin="10,4,10,10" Text="{Binding Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" AcceptsTab="True">
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Couper" Command="Cut"/>
+                    <MenuItem Header="Copier" Command="Copy"/>
+                    <MenuItem Header="Coller" Command="Paste"/>
+                    <Separator/>
+                    <MenuItem x:Name="AddProvidedWordsMenuItem" Header="Ajouter dans les mots fournis" Click="AddProvidedWordsMenuItem_Click"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
+        <TextBlock Text="Mots fournis : " TextAlignment="Center" Margin="5,25,12,1" Grid.Column="1" Grid.ColumnSpan="2" Height="24"/>
+        <ListBox x:Name="ProvidedWordsListBox" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,4,10,10" SelectionMode="Multiple"/>
+        <xctk:WatermarkTextBox x:Name="ProvidedWordsWatermarkTextBox" Margin="10,10,12,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Watermark="Ecrivez un mot à fournir." Height="30"/>
+        <Button x:Name="AddButton" Content="Ajouter" Margin="10,5,10,10" Click="AddButton_Click" Grid.Row="3" Grid.Column="1" Height="33" IsDefault="True"/>
+        <Button x:Name="DeleteButton" Content="Supprimer"  Margin="10,5,10,10" Click="DeleteButton_Click" Grid.Column="2" Grid.Row="3" Height="33"/>
+    </Grid>
+</Window>

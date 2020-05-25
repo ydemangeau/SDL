@@ -1,0 +1,62 @@
+﻿@using SDLL;
+@model Activity
+
+@{
+    ViewBag.Title = "Travail d'une activité";
+}
+
+<body onload="document.getElementById('motAChercher').focus()">
+    <div class="col-lg-9 row">
+        <h1 style="text-decoration:underline; text-align:center">@(Model.ActivityName)</h1>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div>
+            <div class="col-md-9">
+                @*@Html.DisplayFor(m => m.TextToDisplay, new { @class = "multiline" })*@
+                @Html.Raw(Html.Encode(Model.TextToDisplay).Replace("\n", "<br />"))
+            </div>
+            <div class="col-md-3">
+                <div class="col-lg-1">
+                    @using (Html.BeginForm("Save", "Activity"))
+                    {
+                        <input type="submit" value="Sauvegarder" onclick="location.href='@Url.Action("Save", "Activity")'" class="btn btn-default" />
+                    }
+                </div>
+                <div class="col-md-offset-4 col-md-1">
+                    @using (Html.BeginForm("ProvidedWords", "Activity"))
+                    {
+                        <input type="submit" value="Mot Fournis" onclick="location.href='@Url.Action("Work", "Activity", new { tags = "pw" })'" class="btn btn-default" />
+                    }
+                </div>
+                <br /><br /><br />
+                @if (Model.LastWordGrabbed != null && Model.LastWordGrabbed != "")
+                {
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="">
+                            @Html.Label("Dernier mot saisi :")
+                            @Html.DisplayFor(m => m.LastWordGrabbed)
+                            <hr />
+                            @Html.Label(string.Concat("Statut : ", Model.WordStatus))
+                        </div>
+                    </div>
+                }
+                <div class="jumbotron jumbotron-fluid">
+                    @Html.Label("Nombre de mots trouvés :")
+                    <hr />
+                    @Html.DisplayFor(m => m.NumberOfWordsFound)/@Html.DisplayFor(m => m.NumberOfWordsTotal)
+                </div>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("Work", "Activity", new { id = Model.IDActivity }, FormMethod.Post))
+    {
+        <div>
+            <hr />
+            Saisir un mot :
+            <input type="text" id="motAChercher" name="motAChercher" autocomplete="off" />
+            <input type="submit" value="Valider" class="btn btn-default" />
+        </div>
+    }
+</body>

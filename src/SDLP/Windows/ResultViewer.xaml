@@ -1,0 +1,15 @@
+﻿<Window x:Class="SDLP.ResultViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SDLP"
+        mc:Ignorable="d"
+        Title="Résultat de l'activité : " Height="450" Width="500">
+    <Grid>
+        <TextBlock x:Name="ActivityNameTextBlock" TextWrapping="Wrap" Margin="10,10,10,374" FontSize="16" TextAlignment="Center"/>
+        <TextBlock x:Name="ActivityTextTextBlock" Margin="10,91,166,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="318" Width="316" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <TextBlock Text="Nombre de mots trouvés :" Margin="340,171,10,217"/>
+        <TextBlock x:Name="NumberOfFoundWordsTextBlock" Margin="340,207,10,182"/>
+    </Grid>
+</Window>

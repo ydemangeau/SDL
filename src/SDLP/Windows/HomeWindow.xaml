@@ -1,0 +1,42 @@
+﻿<Window x:Class="SDLP.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SDLP"
+        mc:Ignorable="d"
+        Title="Accueil" Height="350" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Closing="Window_Closing">
+    <Grid>
+        <TextBlock Text="Le Studio des Langues" FontSize="20" Margin="10,10,10,269" TextAlignment="Center"/>
+        <TextBlock Text="Prise en main" FontSize="16" Margin="10,57,399,235"/>
+        <TextBlock Margin="10,91,399,204">
+            <Hyperlink x:Name="TutorialHyperLink" Click="TutorialHyperLink_Click">Apprendre à utiliser l'application</Hyperlink>
+        </TextBlock>
+        <TextBlock Text="Ouvrir" FontSize="16" Margin="306,57,58,231"/>
+        <TextBlock Margin="306,95,58,200">
+            <Hyperlink x:Name="ActivitiesBDDHyperLink" Click="ActivitiesBDDHyperLink_Click">Activité présente sur la base de données</Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="306,280,10,15">
+            <Hyperlink x:Name="DomainServerConfigurationHyperLink" Click="DomainServerConfigurationHyperLink_Click">Configurer les identifiants du serveur de domaine</Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="306,126,58,169">
+            <Hyperlink x:Name="LocalActivitiesHyperLink" Click="OpenFileHyperLink_Click" Tag="Activity">Activité enregistrée localement</Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="306,157,58,138">
+            <Hyperlink x:Name="ResultActivityHyperLink" Click="OpenFileHyperLink_Click" Tag="Result">Résultat d'une activité</Hyperlink>
+        </TextBlock>
+        <TextBlock Text="Nouvelle activité" FontSize="16" Margin="10,135,354,153"/>
+        <TextBlock Margin="10,173,354,122">
+            <Hyperlink x:Name="NewActivityHyperLink" Click="NewActivityHyperLink_Click">Créer une nouvelle activité</Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="308,211,10,77" Text="Configuration" FontSize="18"/>
+        <TextBlock Margin="308,249,9,46">
+            <Hyperlink x:Name="BDDConfigurationHyperLink" Click="BDDConfigurationHyperLink_Click">Configurer les identifiants de la base de données</Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="9,211,309,77" Text="Activités" FontSize="18"/>
+        <TextBlock Margin="10,249,308,46">
+            <Hyperlink x:Name="ActivitiesHyperLink" Click="ActivitiesHyperLink_Click">Consulter et gérer la liste des activités</Hyperlink>
+        </TextBlock>
+
+    </Grid>
+</Window>

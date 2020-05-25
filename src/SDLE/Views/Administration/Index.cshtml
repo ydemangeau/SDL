@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Page d'accueil de l'administration";
+    Layout = "~/Views/Shared/_AdministratorLayout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>Administration</h1>
+    <p class="lead">Ce site vous permet de configurer les informations utiles pour le bon fonctionnment du Studio des Langues.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Base de données</h2>
+        <p style="text-align:justify">
+           Le studio des Langues utilise une base de données pour stocker l'intégralité des activités et des résultats des élèves et différentes informations sont nécessaires pour pouvoir assurer la communication entre le Studio des Langues et la base de données.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("BDD", "Administration")">Modifier la configuration &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Serveur de domaine</h2>
+        <p style="text-align:justify">
+            Il est nécessaire pour les élèves et les étudiants de se connecter pour accéder aux activités créées par le professeur et leur sauvegarde. Pour cela, une communication avec le serveur AD est établie.
+            Pour cela, plusieurs informations doivent être saisies pour permettre la communication entre les deux modules.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("ServeurDomaine", "Administration")">Modifier la configuration &raquo;</a></p>
+    </div>
+</div>
+

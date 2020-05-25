@@ -1,0 +1,67 @@
+﻿@using SDLL.Configuration
+@model BDDConfiguration
+
+@{
+    /**/
+    ViewBag.Title = "Informations relatives à la base de données";
+    Layout = "~/Views/Shared/_AdministratorLayout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>Configuration de la base de données</h2>
+    <p class="lead">Renseignez les informations suivantes pour permettre au Studio des Langues de communiquer avec la base de données.</p>
+</div>
+
+<p class="text-success">@ViewBag.Information</p>
+
+<section>
+    <div class="row">
+        <div class="col-md-8">
+            <section id="loginForm">
+                @using (Html.BeginForm("BDD", "Administration", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <h4>Informations générales de la base de données.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.IPAddress, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.IPAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.IPAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BDDName, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.BDDName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.BDDName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <h4>Identifiants de la base de données.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.User, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.User, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.User, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Sauvegarder" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</section>

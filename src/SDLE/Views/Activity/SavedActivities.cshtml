@@ -1,0 +1,43 @@
+﻿@using SDLL
+@model List<Activity>
+
+@{
+    ViewBag.Title = "Travailler une nouvelle activité";
+}
+
+<div class="jumbotron">
+    <h1>Travailler une activité</h1>
+    <p class="lead">Choissisez une activité en appuyant sur le bouton "Travailler". Si vous souhaitez afficher les mots fournis, cochez la case correspondant pour l'activité.</p>
+</div>
+
+<div>
+    <div class="row">
+        @if (Model.Count > 0 && Model != null)
+        {
+            <div class="col-md-6">
+                <h2>Nom de l'activité</h2>
+                @foreach (Activity activty in Model)
+                {
+                    @Html.DisplayFor(modelItem => activty.ActivityName)
+                    <br /><br />
+                }
+            </div>
+            <div class="col-md-6">
+                <h2>&nbsp;</h2>
+                @foreach (Activity activty in Model)
+                {
+                    @Html.ActionLink("Travailler", "Work", "Activity", new { id = activty.IDActivity, tag = "saved" }, new { @class = "btn btn-default" })
+                    <br />
+                }
+                <br />
+            </div>
+        }
+        else
+        {
+            <p>Aucune activité n'est disponible actuellement.</p>
+        }
+        </div>
+</div>
+
+
+

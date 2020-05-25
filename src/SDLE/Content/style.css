@@ -1,0 +1,16 @@
+﻿body {
+}
+
+.box {
+    background-color: #fff;
+    border: #ccc 1px solid;
+    padding: 50px;
+    display: block;
+    margin: 1px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.multiline {
+    white-space:pre-wrap;
+}

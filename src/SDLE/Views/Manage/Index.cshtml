@@ -1,0 +1,36 @@
+﻿@model SDLE.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Gérer";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Changer les paramètres de votre compte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Mot de passe :</dt>
+        <dd>
+            [
+            @Html.ActionLink("Changer votre mot de passe", "ChangePassword")
+            ]
+        </dd>
+        <dt>Adresse e-mail :</dt>
+        <dd>
+            @Model.Email
+            [
+            @if (Model.Email != null)
+            {
+                @Html.ActionLink("Changer votre adresse e-mail", "ChangeEmail")
+            }
+            else
+            {
+                @Html.ActionLink("Ajouter une adresse e-mail", "SetEmail")
+            }
+            ]
+        </dd>
+    </dl>
+</div>
+
